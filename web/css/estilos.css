@@ -1,0 +1,17 @@
+.div-bottom {
+width: 25%;
+float: left;
+padding: 20px 15px;
+}
+
+.stat {
+  position: relative;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 12px;
+}

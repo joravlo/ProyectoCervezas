@@ -1,0 +1,6 @@
+cervezas_homepage:
+    path:     /
+    defaults: { _controller: cervezasBundle:Default:index }
+cervezas_detalle:
+    path:     /detalle
+    defaults: { _controller: cervezasBundle:Default:detalle }
