@@ -2,5 +2,5 @@ cervezas_homepage:
     path:     /
     defaults: { _controller: cervezasBundle:Default:index }
 cervezas_detalle:
-    path:     /detalle
+    path:     /detalle/{idCerveza}
     defaults: { _controller: cervezasBundle:Default:detalle }

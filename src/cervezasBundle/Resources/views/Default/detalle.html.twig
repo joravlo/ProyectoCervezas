@@ -12,29 +12,30 @@
   <div class="w3-card-4" style="width:25%">
     <img src="http://bierhausvirginia.com/wp-content/uploads/2016/09/paulaner.png" style="width:100%">
     <div class="w3-container">
-      <h2 class="w3-center">Paulaner</h2>
-      <p><b>Pais:</b> Alemania</p>
-      <p><b>Población:</b> Berlin</p>
-      <p><b>Fecha de almacenamiento:</b> 21/06/2016</p>
+      <h2 class="w3-center">{{cerveza.nombre}}</h2>
+      <p><b>Pais:</b> {{cerveza.pais}}</p>
+      <p><b>Población:</b> {{cerveza.poblacion}}</p>
+      <p><b>Fecha de almacenamiento:</b> {{cerveza.fechaAlmacen|date('Y-m-d')}}</p>
 
       <div class="">
         <div class="div-bottom w3-center">
-          <div class="stat">Trigo</div>
+          <div class="stat">{{cerveza.tipo}}</div>
           <div class="stat-value">Tipo</div>
         </div>
 
         <div class="div-bottom w3-center">
-          <div class="stat">500ml</div>
+          <div class="stat">{{cerveza.tamano}}ml</div>
           <div class="stat-value">Tamaño</div>
         </div>
 
         <div class="div-bottom w3-center">
-          <div class="stat">10</div>
+          <div class="stat">{{cerveza.cantidad}}</div>
           <div class="stat-value">Cantidad</div>
         </div>
 
         <div class="div-bottom w3-center">
-          <div class="stat">Si</div>
+          {% set importacion = cerveza.importacion %}
+          <div class="stat">{% if importacion == 1 %} Si {% elseif importacion == 0 %}No{% endif %}</div>
           <div class="stat-value">Importación</div>
         </div>
       </div>

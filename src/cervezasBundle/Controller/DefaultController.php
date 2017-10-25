@@ -11,8 +11,11 @@ class DefaultController extends Controller
         return $this->render('cervezasBundle:Default:index.html.twig');
     }
 
-    public function detalleAction()
+    public function detalleAction($idCerveza)
     {
-        return $this->render('cervezasBundle:Default:detalle.html.twig');
+      //Repositorio de la entidad
+        $repository = $this->getDoctrine()->getRepository('cervezasBundle:Cervezas');
+        $cerveza = $repository->find($idCerveza);
+        return $this->render('cervezasBundle:Default:detalle.html.twig',array('cerveza'=>$cerveza));
     }
 }
