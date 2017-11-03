@@ -4,3 +4,6 @@ cervezas_homepage:
 cervezas_detalle:
     path:     /detalle/{idCerveza}
     defaults: { _controller: cervezasBundle:Default:detalle }
+cervezas_insertar:
+    path:     /insertar/{nombre}&{pais}&{poblacion}
+    defaults: { _controller: cervezasBundle:Default:insertar }
