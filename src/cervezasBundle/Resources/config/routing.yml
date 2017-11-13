@@ -7,3 +7,9 @@ cervezas_detalle:
 cervezas_insertar:
     path:     /insertar/{nombre}&{pais}&{poblacion}
     defaults: { _controller: cervezasBundle:Default:insertar }
+cervezas_nueva:
+    path:     /nuevaCerveza
+    defaults: { _controller: cervezasBundle:Default:nuevaCerveza }
+cervezas_actualizar:
+    path:     /actualizarCerveza/{idCerveza}
+    defaults: { _controller: cervezasBundle:Default:actualizarCerveza }

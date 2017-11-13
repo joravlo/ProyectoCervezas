@@ -4,6 +4,8 @@ namespace cervezasBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use cervezasBundle\Entity\Cervezas;
+use cervezasBundle\Form\CervezasType;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -43,4 +45,45 @@ class DefaultController extends Controller
       //Redireccionamos a la pagina que muestra el detalle de la cerveza segun el id
       return $this->redirect($this->generateUrl('cervezas_detalle', array('idCerveza' => $cerveza->getId())));
     }
+
+    public function nuevaCervezaAction(Request $request)
+    {
+      $cerveza = new Cervezas();
+      $form = $this->createForm(CervezasType::class);
+
+      $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+
+        $cerveza = $form->getData();
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($cerveza);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('cervezas_detalle', array('idCerveza' => $cerveza->getId())));
+
+    }
+
+      return $this->render('cervezasBundle:Default:nuevaCerveza.html.twig',array('form'=> $form->createView()));
+}
+
+public function actualizarCervezaAction(Request $request, $idCerveza)
+{
+  $em = $this->getDoctrine()->getManager();
+  $cerveza = $em->getRepository(Cervezas::Class)->find($idCerveza);
+  $form = $this->createForm(CervezasType::class, $cerveza);
+
+  $form->handleRequest($request);
+if ($form->isSubmitted() && $form->isValid()) {
+
+    $cerveza = $form->getData();
+    $em->persist($cerveza);
+    $em->flush();
+    return $this->redirect($this->generateUrl('cervezas_detalle', array('idCerveza' => $cerveza->getId())));
+}
+
+  return $this->render('cervezasBundle:Default:actualizarCerveza.html.twig',array('form'=> $form->createView()));
+}
+
 }
